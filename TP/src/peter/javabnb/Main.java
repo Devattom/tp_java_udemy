@@ -5,6 +5,7 @@ import peter.javabnb.logements.Chalet;
 import peter.javabnb.logements.Logement;
 import peter.javabnb.logements.Maison;
 import peter.javabnb.outils.MaDate;
+import peter.javabnb.outils.Utile;
 import peter.javabnb.reservations.*;
 import peter.javabnb.utilisateurs.Hote;
 import peter.javabnb.utilisateurs.Voyageur;
@@ -28,7 +29,10 @@ public class Main {
 
         // Les critères de mon séjour
         Date maDate = new MaDate(3, 4, 2025);
-        int nbNuits = 8;
+
+
+        int nbNuits = Utile.choix("le nombre de nuits", 1, 31);
+
         Logement logement = monChalet;
         int nbVoyageurs = 2;
 

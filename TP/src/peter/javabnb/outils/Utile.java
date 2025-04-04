@@ -1,6 +1,8 @@
 package peter.javabnb.outils;
 
 import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Utile {
 
@@ -42,6 +44,35 @@ public class Utile {
         stringBuilder.append(date.getYear() + 1900);
 
         return stringBuilder.toString();
+    }
+
+    public static int choix(String nomDeLaVariable, int valeurMin, int valeurMax) {
+        Scanner sc = new Scanner(System.in);
+
+        int valeur = 0;
+        boolean valide = false;
+
+        do {
+            System.out.print("Veuillez saisir une valeur pour" + nomDeLaVariable + " compris entre " + valeurMin + " et " + valeurMax + ".");
+            try {
+                valeur = sc.nextInt();
+
+                if (valeur < valeurMin || valeur > valeurMax) {
+                    System.out.println("Attention la valeur n'est pas valide");
+                    valide = false;
+                } else {
+                    valide = true;
+                }
+            } catch (InputMismatchException e) {
+                String error = sc.next();
+                System.out.println("Attention la valeur " + error + " n'est pas valide." );
+                valide = false;
+            }
+        } while (!valide);
+
+        sc.close();
+
+        return valeur;
     }
 
 }

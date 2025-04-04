@@ -5,13 +5,8 @@ import peter.javabnb.logements.Chalet;
 import peter.javabnb.logements.Logement;
 import peter.javabnb.logements.Maison;
 import peter.javabnb.outils.MaDate;
-import peter.javabnb.outils.Utile;
-import peter.javabnb.reservations.Sejour;
-import peter.javabnb.reservations.Reservation;
-import peter.javabnb.reservations.SejourCourt;
-import peter.javabnb.reservations.SejourLong;
+import peter.javabnb.reservations.*;
 import peter.javabnb.utilisateurs.Hote;
-import peter.javabnb.utilisateurs.Personne;
 import peter.javabnb.utilisateurs.Voyageur;
 
 import java.util.Date;
@@ -32,19 +27,19 @@ public class Main {
 
 
         // Les critères de mon séjour
-        Date maDate = new MaDate(15, 7, 2024);
-        int nbNuits = 2;
+        Date maDate = new MaDate(3, 4, 2025);
+        int nbNuits = 8;
         Logement logement = monChalet;
         int nbVoyageurs = 2;
 
         // Création d'un séjour (court ou long)
         Sejour monSejour;
 
-        if (nbNuits < 6) {
-           // Sejour court
+        if (nbNuits == 2 && maDate.getDay() == 5) {
+            monSejour = new SejourWeekEnd(maDate, nbNuits, logement, nbVoyageurs);
+        } else if (nbNuits < 6) {
             monSejour = new SejourCourt(maDate, nbNuits, logement, nbVoyageurs);
         } else {
-            // Sejour long
             monSejour = new SejourLong(maDate, nbNuits, logement, nbVoyageurs);
         }
         

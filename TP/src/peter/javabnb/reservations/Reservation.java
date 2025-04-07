@@ -13,7 +13,22 @@ public class Reservation {
 
     private Date dateDeReservation;
 
-    public Reservation(Voyageur voyageur, Reservable objetReservable) {
+    /**
+     *
+     *
+     * @param voyageur
+     * @param objetReservable
+     * @throws Exception
+     */
+    public Reservation(Voyageur voyageur, Reservable objetReservable) throws Exception{
+        if (!objetReservable.aUnNombreDeVoyageursCorrecte() ) {
+            throw new Exception("Le nombre de voyageur est incorrect");
+        } else if(!objetReservable.aUneDateArriveeCorrecte()) {
+            throw new Exception("La date d'arrivée est incorrecte");
+        } else if (!objetReservable.aUnNombreDeNuitsCorrecte()) {
+            throw new Exception("Le nombre de nuits est incorrect");
+        }
+
         this.voyageur = voyageur;
         this.objetReservable = objetReservable;
         this.dateDeReservation = new MaDate();

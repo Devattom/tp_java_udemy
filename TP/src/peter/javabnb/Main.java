@@ -28,13 +28,13 @@ public class Main {
 
 
         // Les critères de mon séjour
-        Date maDate = new MaDate(3, 4, 2025);
+        Date maDate = new MaDate(15, 4, 2025);
 
 
         int nbNuits = Utile.choix("le nombre de nuits", 1, 31);
 
         Logement logement = monChalet;
-        int nbVoyageurs = 2;
+        int nbVoyageurs = Utile.choix("le nombre de voyageurs", 1, 12);
 
         // Création d'un séjour (court ou long)
         Sejour monSejour;
@@ -46,10 +46,12 @@ public class Main {
         } else {
             monSejour = new SejourLong(maDate, nbNuits, logement, nbVoyageurs);
         }
-        
-        Reservation maReservation = new Reservation(monVoyageur, monSejour);
 
-        // Utilisation
-        maReservation.afficher();
+        try {
+            Reservation maReservation = new Reservation(monVoyageur, monSejour);
+            maReservation.afficher();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

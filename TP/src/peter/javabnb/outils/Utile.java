@@ -53,7 +53,7 @@ public class Utile {
         boolean valide = false;
 
         do {
-            System.out.print("Veuillez saisir une valeur pour" + nomDeLaVariable + " compris entre " + valeurMin + " et " + valeurMax + ".");
+            System.out.print("Veuillez saisir une valeur pour " + nomDeLaVariable + " compris entre " + valeurMin + " et " + valeurMax + ".");
             try {
                 valeur = sc.nextInt();
 
@@ -69,8 +69,6 @@ public class Utile {
                 valide = false;
             }
         } while (!valide);
-
-        sc.close();
 
         return valeur;
     }

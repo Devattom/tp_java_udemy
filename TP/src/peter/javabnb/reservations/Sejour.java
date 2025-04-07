@@ -13,7 +13,7 @@ public abstract class Sejour implements Reservable {
     private int nbVoyageurs;
     protected int prix;
 
-    public Sejour(Date dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
+    Sejour(Date dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
         this.dateArrivee = dateArrivee;
         this.nbNuits = nbNuits;
         this.logement = logement;

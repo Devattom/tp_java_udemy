@@ -28,7 +28,7 @@ public class Main {
 
 
         // Les critères de mon séjour
-        Date maDate = new MaDate(15, 4, 2025);
+        Date maDate = new MaDate(11, 4, 2025);
 
 
         int nbNuits = Utile.choix("le nombre de nuits", 1, 31);
@@ -37,15 +37,7 @@ public class Main {
         int nbVoyageurs = Utile.choix("le nombre de voyageurs", 1, 12);
 
         // Création d'un séjour (court ou long)
-        Sejour monSejour;
-
-        if (nbNuits == 2 && maDate.getDay() == 5) {
-            monSejour = new SejourWeekEnd(maDate, nbNuits, logement, nbVoyageurs);
-        } else if (nbNuits < 6) {
-            monSejour = new SejourCourt(maDate, nbNuits, logement, nbVoyageurs);
-        } else {
-            monSejour = new SejourLong(maDate, nbNuits, logement, nbVoyageurs);
-        }
+        Sejour monSejour = SejourFactory.creerSejour(maDate, logement, nbNuits, nbVoyageurs);
 
         try {
             Reservation maReservation = new Reservation(monVoyageur, monSejour);

@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class SejourCourt extends Sejour {
 
-    public SejourCourt(Date dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
+    SejourCourt(Date dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
         super(dateArrivee, nbNuits, logement, nbVoyageurs);
     }
 

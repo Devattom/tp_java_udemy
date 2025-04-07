@@ -5,7 +5,7 @@ import peter.javabnb.logements.Logement;
 import java.util.Date;
 
 public class SejourWeekEnd extends Sejour {
-    public SejourWeekEnd(Date dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
+    SejourWeekEnd(Date dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
         super(dateArrivee, nbNuits, logement, nbVoyageurs);
     }
 

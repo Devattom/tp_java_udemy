@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         // Déclaration & Initialisation
         Voyageur monVoyageur = new Voyageur("Peter", "Bardu", 32);
-
+        Loge
         // Les critères de mon séjour
         Date maDate = new MaDate(11, 4, 2025);
 

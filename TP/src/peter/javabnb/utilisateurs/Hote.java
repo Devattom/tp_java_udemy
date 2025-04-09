@@ -1,5 +1,7 @@
 package peter.javabnb.utilisateurs;
 
+import java.util.Objects;
+
 public class Hote extends Personne {
 
     private int delaiDeReponse;
@@ -17,6 +19,18 @@ public class Hote extends Personne {
         } else {
             System.out.println(" qui s'engage à répondre dans les " + delaiDeReponse + " heures.");
         }
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Hote hote = (Hote) o;
+        return delaiDeReponse == hote.delaiDeReponse;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), delaiDeReponse);
     }
 }

@@ -1,5 +1,7 @@
 package peter.javabnb.utilisateurs;
 
+import java.util.Objects;
+
 /**
  * La définition de la classer peter.javabnb.utilisateurs.Personne qui me permet de créer une personne.
  * On représente une personne avec un nom, un prénom et un age.
@@ -11,11 +13,11 @@ public class Personne {
     /**
      * Attribut de type String qui représente le prénom
      */
-    private String prenom;
+    protected String prenom;
     /**
      * Attribut de type String qui représente le nom
      */
-    private String nom;
+    protected String nom;
     /**
      * Attribut de type int qui représente l'âge
      */
@@ -40,4 +42,15 @@ public class Personne {
         System.out.print(prenom + " " + nom + " (" + age + " ans)");
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Personne personne = (Personne) o;
+        return age == personne.age && Objects.equals(prenom, personne.prenom) && Objects.equals(nom, personne.nom);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(prenom, nom, age);
+    }
 }

@@ -13,15 +13,15 @@ public class Personne {
     /**
      * Attribut de type String qui représente le prénom
      */
-    protected String prenom;
+    private final String prenom;
     /**
      * Attribut de type String qui représente le nom
      */
-    protected String nom;
+    private final String nom;
     /**
      * Attribut de type int qui représente l'âge
      */
-    private int age;
+    private final int age;
 
     /**
      * Constructeur à trois paramètres permettant d'initialiser une personne

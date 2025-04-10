@@ -2,11 +2,12 @@ package peter.javabnb.reservations;
 
 import peter.javabnb.logements.Logement;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class SejourCourt extends Sejour {
 
-    SejourCourt(Date dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
+    SejourCourt(LocalDate dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
         super(dateArrivee, nbNuits, logement, nbVoyageurs);
     }
 

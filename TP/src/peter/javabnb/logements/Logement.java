@@ -5,12 +5,12 @@ import peter.javabnb.utilisateurs.Personne;
 
 public abstract class Logement {
 
-    private Hote hote;
-    private String nom;
-    private int tarifParNuit;
-    private String adresse;
-    private int superifie;
-    private int nbVoyageurMax;
+    private final Hote hote;
+    private final String nom;
+    private final int tarifParNuit;
+    private final String adresse;
+    private final int superifie;
+    private final int nbVoyageurMax;
 
     public Logement(Hote hote, String nom, int tarifParNuit, String adresse, int superifie, int nbVoyageurMax) {
         this.hote = hote;

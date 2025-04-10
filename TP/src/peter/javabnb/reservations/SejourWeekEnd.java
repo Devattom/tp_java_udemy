@@ -2,10 +2,11 @@ package peter.javabnb.reservations;
 
 import peter.javabnb.logements.Logement;
 
-import java.util.Date;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 
 public class SejourWeekEnd extends Sejour {
-    SejourWeekEnd(Date dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
+    SejourWeekEnd(LocalDate dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
         super(dateArrivee, nbNuits, logement, nbVoyageurs);
     }
 
@@ -16,7 +17,7 @@ public class SejourWeekEnd extends Sejour {
 
     @Override
     public boolean aUneDateArriveeCorrecte() {
-        return super.aUneDateArriveeCorrecte() && dateArrivee.getDay() == 5;
+        return super.aUneDateArriveeCorrecte() && dateArrivee.getDayOfWeek() == DayOfWeek.FRIDAY;
     }
 
     @Override

@@ -3,17 +3,19 @@ package peter.javabnb.reservations;
 import peter.javabnb.logements.Logement;
 import peter.javabnb.logements.Maison;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 
 public abstract class Sejour implements Reservable {
 
-    protected Date dateArrivee;
+    protected LocalDate dateArrivee;
     protected int nbNuits;
     protected Logement logement;
     private int nbVoyageurs;
     protected int prix;
 
-    Sejour(Date dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
+    Sejour(LocalDate dateArrivee, int nbNuits, Logement logement, int nbVoyageurs) {
         this.dateArrivee = dateArrivee;
         this.nbNuits = nbNuits;
         this.logement = logement;
@@ -31,13 +33,9 @@ public abstract class Sejour implements Reservable {
      */
     @Override
     public boolean aUneDateArriveeCorrecte() {
-        Date dateActuelle = new Date();
+        LocalDate dateActuelle = LocalDate.now();
 
-        if (dateArrivee.after(dateActuelle)) {
-            return true;
-        } else {
-            return false;
-        }
+        return dateArrivee.isAfter(dateActuelle);
     }
 
     /**
@@ -59,7 +57,19 @@ public abstract class Sejour implements Reservable {
             System.out.println("Piscine d'intérieur : " + maMaison.aUnePiscineInterieur());
         }
 
-        System.out.println("La date d'arrivée est le " + dateArrivee + " pour "
+        System.out.println("La date d'arrivée est le " + dateArrivee.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " pour "
                 + nbNuits + " nuit" + (nbNuits > 1 ? "s." : "."));
+    }
+
+    /**
+     *
+     * @param logement
+     */
+    public void setLogement(Logement logement) throws IllegalArgumentException{
+        if (logement == null) {
+            throw new IllegalArgumentException("Logement null");
+        }
+        this.logement = logement;
+        miseAJourDuPrixDuSejour();
     }
 }

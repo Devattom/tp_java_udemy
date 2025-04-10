@@ -4,8 +4,8 @@ import peter.javabnb.utilisateurs.Hote;
 
 public class Maison extends Logement {
 
-    private int superficieDuJardin;
-    private boolean possedePiscine;
+    private final int superficieDuJardin;
+    private final boolean possedePiscine;
 
     public Maison(Hote hote, String nom, int tarifParNuit, String adresse, int superifie, int nbVoyageurMax, int superficieDuJardin, boolean possedePiscine) {
         super(hote, nom, tarifParNuit, adresse, superifie, nbVoyageurMax);

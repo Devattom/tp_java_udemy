@@ -1,9 +1,9 @@
 package peter.javabnb.reservations;
 
-import peter.javabnb.outils.MaDate;
 import peter.javabnb.utilisateurs.Voyageur;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Reservation {
 
@@ -11,7 +11,7 @@ public class Reservation {
 
     private Reservable objetReservable;
 
-    private Date dateDeReservation;
+    private LocalDate dateDeReservation;
 
     /**
      *
@@ -31,11 +31,11 @@ public class Reservation {
 
         this.voyageur = voyageur;
         this.objetReservable = objetReservable;
-        this.dateDeReservation = new MaDate();
+        this.dateDeReservation = LocalDate.now();
     }
 
     public void afficher() {
-        System.out.print("Réservation faite le " + dateDeReservation + " par le voyageur ");
+        System.out.print("Réservation faite le " + dateDeReservation.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " par le voyageur ");
         voyageur.afficher();
         System.out.print(" chez ");
         objetReservable.afficher();

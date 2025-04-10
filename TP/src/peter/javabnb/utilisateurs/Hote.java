@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Hote extends Personne {
 
-    private int delaiDeReponse;
+    private final int delaiDeReponse;
 
     public Hote(String pPrenom, String pNom, int pAge, int delaiDeReponse) {
         super(pPrenom, pNom, pAge);

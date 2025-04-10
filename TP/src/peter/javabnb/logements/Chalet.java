@@ -4,7 +4,7 @@ import peter.javabnb.utilisateurs.Hote;
 
 public class Chalet extends Logement {
 
-    private int altitude;
+    private final int altitude;
 
     public Chalet(Hote hote, String nom, int tarifParNuit, String adresse, int superifie, int nbVoyageurMax, int altitude) {
         super(hote, nom, tarifParNuit, adresse, superifie, nbVoyageurMax);

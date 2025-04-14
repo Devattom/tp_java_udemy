@@ -13,6 +13,9 @@ public class Maison extends Logement {
         this.possedePiscine = possedePiscine;
     }
 
+    public boolean aUnePiscine() {
+        return possedePiscine;
+    }
     public boolean aUnePiscineInterieur() {
         return superficieDuJardin == 0 && possedePiscine;
     }

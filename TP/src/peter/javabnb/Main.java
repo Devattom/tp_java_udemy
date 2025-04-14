@@ -8,6 +8,7 @@ import peter.javabnb.reservations.*;
 import peter.javabnb.utilisateurs.Voyageur;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,8 +20,11 @@ public class Main {
         int nbNuits = Utile.choix("le nombre de nuits", 1, 31);
         int nbVoyageurs = Utile.choix("le nombre de voyageurs", 1, 12);
 
-        Recherche recherche1 = new Recherche.Builder(3).build();
-        System.out.println(recherche1);
+        Recherche recherche1 = new Recherche.Builder(nbVoyageurs).build();
+        ArrayList<Logement> logements =  recherche1.resultat();
+
+        System.out.println(logements.size());
+        logements.forEach(Logement::afficher);
 
         Recherche recherche2 = new Recherche.Builder(3)
                 .tarifMin(100)

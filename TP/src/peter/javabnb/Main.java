@@ -4,13 +4,14 @@ import datas.Recherche;
 import peter.javabnb.logements.Logement;
 import peter.javabnb.logements.Maison;
 import peter.javabnb.outils.JavaBnBData;
-import peter.javabnb.outils.Utile;
 import peter.javabnb.reservations.*;
+import peter.javabnb.utilisateurs.Hote;
 import peter.javabnb.utilisateurs.Voyageur;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -26,37 +27,34 @@ public class Main {
         Recherche recherche1 = new Recherche.Builder(nbVoyageurs).tarifMin(100).tarifMax(250).build();
         ArrayList<Logement> logements =  recherche1.resultat();
 
-        // noms des logements
-//        logements.stream().map(logement -> logement.getNom()).toList().forEach(nom -> System.out.println(nom));
+//         noms des logements
+        logements.stream().map(Logement::getNom).toList().forEach(System.out::println);
 
-        // tarifs moyens
-//        logements.stream().mapToInt(logement -> logement.getTarifParNuit()).average().ifPresent(tarifMoyen -> System.out.println("le tarif moyen est de " + tarifMoyen));
+//         tarifs moyens
+        logements.stream().mapToInt(Logement::getTarifParNuit).average().ifPresent(tarifMoyen -> System.out.println("le tarif moyen est de " + tarifMoyen));
 
-        // délai de réponses moyen
-//        logements.stream()
-//                .map(logement -> logement.getHote()).distinct()
-//                .mapToInt(hote -> hote.getDelaiDeReponse()).average()
-//                .ifPresent(delayMoyen -> System.out.println("Délai moyen :" + delayMoyen));
+//         délai de réponses moyen
+        logements.stream()
+                .map(Logement::getHote).distinct()
+                .mapToInt(Hote::getDelaiDeReponse).average()
+                .ifPresent(delayMoyen -> System.out.println("Délai moyen :" + delayMoyen));
 
         // logement avec la plus grande capacité de voyageurs
         logements.stream()
-                .max((logement1, logement2) -> logement1.getNbVoyageurMax() - logement2.getNbVoyageurMax())
-                .ifPresent(logement -> logement.afficher());
+                .max(Comparator.comparingInt(Logement::getNbVoyageurMax))
+                .ifPresent(Logement::afficher);
 
         // triez les logements par ordre croissant selon leur prix au m²
         logements.stream()
                 .sorted(Comparator.comparingDouble(logement -> (double) logement.getTarifParNuit() / logement.getSuperifie()))
-                .toList().forEach(logement -> logement.afficher());
+                .toList().forEach(Logement::afficher);
 
         // compter le nb maison avec jardin
-//        long nbMaison = logements.stream().filter(logement -> logement instanceof Maison && ((Maison) logement).getSuperficieDuJardin() > 0).count();
-//        System.out.println(nbMaison);
+        long nbMaison = logements.stream().filter(logement -> logement instanceof Maison && ((Maison) logement).getSuperficieDuJardin() > 0).count();
+        System.out.println(nbMaison);
 
         // afficher le nb de maison par hôtes
-        logements.stream().collect(Collectors.groupingBy(logement -> logement.getHote())).forEach(((hote, logementHote) -> {
-            hote.afficher();
-            System.out.println(" possede " + logementHote.size() + " logements");
-        }));
+        logements.stream().collect(Collectors.groupingBy(Logement::getHote)).forEach((Main::afficherLogementParHote));
 
 
         Logement logement = JavaBnBData.getInstance().getLogements().get(0);
@@ -68,5 +66,10 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void afficherLogementParHote(Hote hote, List<Logement> logementHote) {
+        hote.afficher();
+        System.out.println(" possede " + logementHote.size() + " logements");
     }
 }

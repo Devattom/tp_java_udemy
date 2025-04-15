@@ -79,7 +79,7 @@ public final class LogementsXMLParser {
         int superficie = Integer.parseInt(element.getElementsByTagName("superficie").item(0).getTextContent());
         int nbVoyageursMax = Integer.parseInt(element.getElementsByTagName("nbVoyageursMax").item(0).getTextContent());
 
-        String nomLogement = element.getAttribute("nom");
+        String nomLogement = element.getAttribute("name");
 
         // Si c'est un appartement
         if (element.getNodeName().equals("Appartement")) {

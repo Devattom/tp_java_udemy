@@ -16,6 +16,11 @@ public class Maison extends Logement {
     public boolean aUnePiscine() {
         return possedePiscine;
     }
+
+    public int getSuperficieDuJardin() {
+        return superficieDuJardin;
+    }
+
     public boolean aUnePiscineInterieur() {
         return superficieDuJardin == 0 && possedePiscine;
     }

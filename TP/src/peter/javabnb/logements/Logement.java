@@ -23,7 +23,7 @@ public abstract class Logement {
 
     public abstract void afficher();
 
-    public Personne getHote() {
+    public Hote getHote() {
         return hote;
     }
 

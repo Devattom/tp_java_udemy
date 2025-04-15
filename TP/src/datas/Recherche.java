@@ -40,7 +40,7 @@ public class Recherche {
     }
 
     public Predicate<Logement> predicateTarif() {
-        return logement -> tarifMinParNuit >= logement.getTarifParNuit() && tarifMaxParNuit <= logement.getTarifParNuit();
+        return logement -> tarifMinParNuit <= logement.getTarifParNuit() && tarifMaxParNuit >= logement.getTarifParNuit();
     }
 
     public Predicate<Logement> predicatePiscine() {

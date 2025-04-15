@@ -21,6 +21,10 @@ public class Hote extends Personne {
         }
     }
 
+    public int getDelaiDeReponse() {
+        return delaiDeReponse;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

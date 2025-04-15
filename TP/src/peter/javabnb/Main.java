@@ -41,7 +41,7 @@ public class Main {
 
         // logement avec la plus grande capacité de voyageurs
         logements.stream()
-                .max((logement1, logement2) -> logement1.getNbVoyageurMax() - logement2.getNbVoyageurMax())
+                .max(Comparator.comparingInt(Logement::getNbVoyageurMax))
                 .ifPresent(Logement::afficher);
 
         // triez les logements par ordre croissant selon leur prix au m²
